@@ -52,7 +52,7 @@ db.kandyusers.remove({});
 
 //create the names collection and add documents to it
 exampleUserCandyData.forEach(function(kandyUser){
-  db.kandyusers.insert(kandyType);
+  db.kandyusers.insert(kandyUser);
 });
 
 db.kandyusers.find({});
