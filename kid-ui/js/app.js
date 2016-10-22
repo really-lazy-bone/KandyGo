@@ -33,7 +33,7 @@ angular.module('kid')
     });
 angular.module('kid')
     .component('kidProfile', {
-        template: `Hello kid profile`,
+        templateUrl: `partials/profile.html`,
         controller: ProfileCtrl
     });
 
@@ -68,4 +68,35 @@ function MapCtrl() {
 
 function ProfileCtrl() {
     console.debug('Hello profile component');
+    var vm = this;
+    vm.showVideo = true;
+    vm.updateView = updateView;
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var video = document.getElementById('video');
+    var image = document.getElementById('image');
+    var profilePhoto = '';
+
+    // Get access to the camera!
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // Not adding `{ audio: true }` since we only want video now
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+            video.src = window.URL.createObjectURL(stream);
+
+            video.play();
+        });
+    } 
+
+    // Trigger photo take
+    document.getElementById("snap").addEventListener("click", function() {
+        context.drawImage(video, 0, 0, 640, 480);
+        var profilePhotoUrl = canvas.toDataURL();
+        image.src = profilePhotoUrl;
+    });
+
+    function updateView () {
+        vm.showVideo = !vm.showVideo;
+    }
+
 }
