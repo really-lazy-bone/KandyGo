@@ -1,8 +1,11 @@
-var exampleUserCandyData = [
+var exampleProviderCandyData = [
   {
-  userName: "eric",
-  userDisplayName: "Eric",
-  userPofile: "",
+  providerName: "dans-house",
+  providerDisplayName: "Dan's House",
+  providerPofile: "",
+  lat: 36.121174,
+  long: -115.1696526,
+  isAdvertised: false,
   candies: [
     {
       "candyObject": {
@@ -15,7 +18,7 @@ var exampleUserCandyData = [
           "candyDescription": "cheap candy from cheap people lol",
           "candyConversionRate": 0.05
         },
-      "count": 500
+      "count": 5000
     },
     {
       "candyObject":  {
@@ -28,7 +31,7 @@ var exampleUserCandyData = [
           "candyDescription": "your everyday standard candy",
           "candyConversionRate":0.10
         },
-      "count": 100
+      "count": 1000
     },
     {
       "candyObject":    {
@@ -41,18 +44,18 @@ var exampleUserCandyData = [
           "candyDescription": "only the rich and elite can afford this. Full-sized bars",
           "candyConversionRate":0.5
         },
-      "count": 100
+      "count": 200
     }
   ]
 }];
 
 var conn = new Mongo();
 var db = conn.getDB("kandygo");
-db.kandyusers.remove({});
+db.kandyproviders.remove({});
 
 //create the names collection and add documents to it
-exampleUserCandyData.forEach(function(kandyUser){
-  db.kandyusers.insert(kandyUser);
+exampleProviderCandyData.forEach(function(kandyProvider){
+  db.kandyproviders.insert(kandyProvider);
 });
 
-db.kandyusers.find({});
+db.kandyproviders.find({});
