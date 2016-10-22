@@ -1,8 +1,8 @@
-GET /candy/{user}
+GET /candy?user=USER
 
 {
   "candies": [
-    {s
+    {
        "eventName":
        "eventDescription":
        "candyType":
