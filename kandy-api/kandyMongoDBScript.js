@@ -1,4 +1,3 @@
-//kandy type data
 var kandyTypeData = [
   {
     "eventName": "halloween",
@@ -32,12 +31,8 @@ var kandyTypeData = [
   }
 ];
 
-var kandydb = connect("127.0.0.1:27017/kandygo");
+
+
+var conn = new Mongo();
+var db = conn.getDB("kandygo");
 db.kandytypes.remove({});
-
-//create the names collection and add documents to it
-kandyTypeData.forEach(function(kandyType){
-  db.kandytypes.insert(kandyType);
-});
-
-db.kandytypes.find({});
