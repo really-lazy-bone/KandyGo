@@ -2,12 +2,17 @@
     <head>
         <title>Kids</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <base href="/">
 
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="js/app.js"></script>
-        <script src="css/app.css"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+        <link rel="stylesheet" href="css/app.css" />
     </head>
     <body ng-app="kid">
         <kid-app></kid-app>
+        
+        <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+        <script src="/node_modules/angular/angular.js"></script>
+        <script src="/node_modules/@angular/router/angular1/angular_1_router.js"></script>
+        <script src="js/app.js"></script>
     </body>
 </html>
