@@ -80,3 +80,10 @@ video#video {
 	min-width: 100%;
 	min-height: 100%;
 }
+
+.key-marker {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: #f00;
+}

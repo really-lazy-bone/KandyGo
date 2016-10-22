@@ -4,11 +4,6 @@ angular.module('kid')
     .value('$routerRootComponent', 'kidApp');
 
 angular.module('kid')
-    .config(function($locationProvider) {
-        $locationProvider.html5Mode(true);
-    });
-
-angular.module('kid')
     .component('kidApp', {
         templateUrl: 'partials/app.html',
         controller: AppCtrl,
@@ -41,18 +36,48 @@ function AppCtrl() {
     console.debug('Hello kid app');
 }
 
-function MapCtrl() {
+function MapCtrl($http) {
     console.debug('Hello map component');
     var vm = this;
-    vm.mymap = L.map('mapid').setView([36.1228808, -115.1669438,17], 18);
-
-    navigator.geolocation.getCurrentPosition(function(position) {
-        vm.me = addMarker(position.coords.latitude, position.coords.longitude);
-        vm.mymap.panTo(new L.LatLng(position.coords.latitude, position.coords.longitude));
-
-        console.log(position);
+    vm.mymap = L.map('mapid').setView([36.1228808, -115.1669438,17], 15);
+    var selfMarkerIcon = L.icon({
+        iconUrl: '/assets/blue-location.png',
+        iconSize: [30, 39]
+    });
+    var keyMarkerIcon = L.icon({
+        iconUrl: '/assets/purple-location.png',
+        iconSize: [30, 39]
     });
 
+    navigator.geolocation.getCurrentPosition(function(position) {
+        vm.me = addMarker(position.coords.latitude, position.coords.longitude, {
+            icon: selfMarkerIcon
+        });
+        vm.radius = L.circle([position.coords.latitude, position.coords.longitude], {
+            color: '#0ff',
+            fillColor: '#0ff',
+            fillOpacity: 0.1,
+            radius: 100
+        }).addTo(vm.mymap);
+        vm.mymap.panTo(new L.LatLng(position.coords.latitude, position.coords.longitude));
+    }, function(err) {
+        alert(err);
+        alert('Failed to get current location');
+    });
+
+    $http.get('http://104.236.146.40:1880/candyProviders')
+        .then(response => {
+            vm.providers = response.data;
+            console.debug(vm.providers);
+            vm.providers.forEach(provider => {
+                provider.marker = addMarker(provider.lat, provider.long, {
+                    icon: keyMarkerIcon
+                });
+                provider.marker.on('click', function() {
+                    console.debug('clicked on provider ' + provider.providerDisplayName);
+                });
+            });
+        })
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -61,8 +86,8 @@ function MapCtrl() {
         accessToken: 'pk.eyJ1IjoicmNsaWFvIiwiYSI6ImNpZ2Z1YTZzdjd1ZXl0bW01eTl1N3JrNngifQ.wLdfXWUF0P2H2kiQxrjGXA'
     }).addTo(vm.mymap);
 
-    function addMarker(lat, long) {
-        return L.marker([lat, long]).addTo(vm.mymap);
+    function addMarker(lat, long, option) {
+        return L.marker([lat, long], option).addTo(vm.mymap);
     }
 }
 
