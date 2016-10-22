@@ -70,6 +70,7 @@ function ProfileCtrl() {
     console.debug('Hello profile component');
     var vm = this;
     vm.showVideo = true;
+    vm.updateView = updateView;
     var video = document.getElementById('video');
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
@@ -89,11 +90,13 @@ function ProfileCtrl() {
 
     // Trigger photo take
     document.getElementById("snap").addEventListener("click", function() {
-        vm.showVideo = false;
-        console.log(vm.showVideo);
         context.drawImage(video, 0, 0, 640, 480);
         var profilePhotoUrl = canvas.toDataURL();
         image.src = profilePhotoUrl;
     });
+
+    function updateView () {
+        vm.showVideo = !vm.showVideo;
+    }
 
 }

@@ -1,0 +1,8 @@
+<div ng-show="$ctrl.showVideo" class="photo-view">
+	<video id="video" autoplay></video>
+	<a id="snap" class="photo-button" ng-click="$ctrl.updateView()"><img ng-src="assets/camera.png"></a>
+</div>
+<canvas id="canvas" width="640" height="480"></canvas>
+<div ng-hide="$ctrl.showVideo" class="photo-view">
+	<img id="image" src="">
+</div>`
