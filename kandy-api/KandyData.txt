@@ -5,6 +5,7 @@ Halloween:
 =================================
 {
   "eventName": "halloween",
+  "eventDisplayName": "Halloween",
   "eventDescription": "spooky fun festival for kids and adults",
   "candyType": "bite-size-candy",
   "candyName": "Bite-Sized Candy",
@@ -14,6 +15,7 @@ Halloween:
 }
 {
   "eventName": "halloween",
+  "eventDisplayName": "Halloween",
   "eventDescription": "spooky fun festival for kids and adults",
   "candyType": "normal-candy",
   "candyName": "Normal Candy",
@@ -23,6 +25,7 @@ Halloween:
 }
 {
   "eventName": "halloween",
+  "eventDisplayName": "Halloween",
   "eventDescription": "spooky fun festival for kids and adults",
   "candyType": "full-size-candy",
   "candyName": "Full-Size Candy",
