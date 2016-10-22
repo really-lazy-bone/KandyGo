@@ -7,7 +7,7 @@ var kandyTypeData = [
     "candyType": "bite-size-candy",
     "candyName": "Bite-Sized Candy",
     "candyImageName": "bite-size.svg",
-    "candyDescription": "cheap candy from cheap people lol"
+    "candyDescription": "cheap candy from cheap people lol",
     "candyConversionRate": 0.05
   },
   {
