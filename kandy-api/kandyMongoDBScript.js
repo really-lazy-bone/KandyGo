@@ -32,7 +32,7 @@ var kandyTypeData = [
   }
 ];
 
-var kandydb = connect("127.0.0.1:27017/kandygo"),
+var kandydb = connect("127.0.0.1:27017/kandygo");
 db.kandytypes.remove({});
 
 //create the names collection and add documents to it
