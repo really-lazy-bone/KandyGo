@@ -2,4 +2,33 @@
     position: relative;
 }
 
-#mapid { height: 180px; }
+html, body,
+.fill-to-body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.map {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.map nav {
+    margin-bottom: 3em;
+    z-index: 100000000000;
+}
+.map nav a {
+    color: #fff;
+}
+
+#mapid {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
