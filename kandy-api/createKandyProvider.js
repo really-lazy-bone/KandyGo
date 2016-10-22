@@ -1,5 +1,6 @@
 var exampleProviderCandyData = [
   {
+    _id : 1,
     providerName: "dans-house",
     providerDisplayName: "Dan's House",
     providerPofile: "",
@@ -50,6 +51,7 @@ var exampleProviderCandyData = [
 },
 
 {
+  _id : 2,
   providerName: "trumps-house",
   providerDisplayName: "Trumps's House",
   providerPofile: "",
@@ -100,6 +102,7 @@ var exampleProviderCandyData = [
 },
 
 {
+  _id : 3,
   providerName: "grimaldis",
   providerDisplayName: "Grimaldis Pizza",
   providerPofile: "",
@@ -150,6 +153,7 @@ var exampleProviderCandyData = [
 },
 
 {
+  _id : 4,
   providerName: "ben-and-jerrys",
   providerDisplayName: "Ben and Jerry's",
   providerPofile: "",
@@ -200,11 +204,12 @@ var exampleProviderCandyData = [
 },
 
 {
-  providerName: "trumps-house",
-  providerDisplayName: "Trumps's House",
+  _id : 5,
+  providerName: "caesars",
+  providerDisplayName: "Caesar's Place",
   providerPofile: "",
-  lat: 36.1295451,
-  long: -115.1728213,
+  lat: 36.1195923,
+  long: -115.1719154,
   isAdvertised: false,
   candies: [
     {
