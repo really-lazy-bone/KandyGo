@@ -11,5 +11,9 @@
   "license": "ISC",
   "devDependencies": {
     "lite-server": "^2.2.2"
+  },
+  "dependencies": {
+    "@angular/router": "^0.2.0",
+    "angular": "^1.5.8"
   }
 }
