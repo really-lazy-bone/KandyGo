@@ -28,7 +28,27 @@ var kandyTypeData = [
     "candyImageName": "full-size.svg",
     "candyDescription": "only the rich and elite can afford this. Full-sized bars",
     "candyConversionRate":0.5
-  }
+  },
+  {
+    "eventName": "money2020",
+    "eventDisplayName": "Money 20/20 Scavenger Hunt",
+    "eventDescription": "Scavenger hunt for vendor booths in exhibition hall, completed with sponsored kandies!",
+    "candyType": "mastercard-candy",
+    "candyName": "Mastercard Candy",
+    "candyImageName": "mastercard-candy.svg",
+    "candyDescription": "Priceless",
+    "candyConversionRate":1
+  },
+  {
+    "eventName": "money2020",
+    "eventDisplayName": "Money 20/20 Scavenger Hunt",
+    "eventDescription": "Scavenger hunt for vendor booths in exhibition hall, completed with sponsored kandies!",
+    "candyType": "mastercard-candy",
+    "candyName": "Mastercard Candy",
+    "candyImageName": "mastercard-candy.svg",
+    "candyDescription": "Priceless",
+    "candyConversionRate":1
+  },
 ];
 
 
