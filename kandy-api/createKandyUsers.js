@@ -3,7 +3,7 @@ var exampleUserCandyData = [
   userName: "eric",
   userDisplayName: "Eric",
   userPofile: "",
-  kandies: [
+  candies: [
     {
       "candyObject": {
           "eventName": "halloween",

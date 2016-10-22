@@ -1,0 +1,36 @@
+NOTE: Find service endpoint in Slack
+
+GET /candyType
+Returns a list of available candyTypes in MongoDB
+
+Response:
+    [
+      {
+      "_id": "580bbda7f79bbb8e90a4d45c",
+      "eventName": "halloween",
+      "eventDisplayName": "Halloween",
+      "eventDescription": "spooky fun festival for kids and adults",
+      "candyType": "bite-size-candy",
+      "candyName": "Bite-Sized Candy",
+      "candyImageName": "bite-size.svg",
+      "candyDescription": "cheap candy from cheap people lol",
+      "candyConversionRate": 0.05
+      },
+      {
+      "_id": "580bbda7f79bbb8e90a4d45d",
+      "eventName": "halloween",
+      "eventDisplayName": "Halloween",
+      "eventDescription": "spooky fun festival for kids and adults",
+      "candyType": "normal-candy",
+      "candyName": "Normal Candy",
+      "candyImageName": "normal-size.svg",
+      "candyDescription": "your everyday standard candy",
+      "candyConversionRate": 0.1
+      },
+
+      ...
+    ]
+
+
+GET /candyUsers
+Returns a list of Users and their kandy inventory
