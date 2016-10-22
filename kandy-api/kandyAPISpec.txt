@@ -1,0 +1,14 @@
+GET /candy?user=USER
+
+{
+  "candies": [
+    {
+       "eventName":
+       "eventDescription":
+       "candyType":
+       "candyConversionRate":
+       "count":
+    }
+    ...
+  ]
+}
