@@ -36,3 +36,11 @@ var kandyTypeData = [
 var conn = new Mongo();
 var db = conn.getDB("kandygo");
 db.kandytypes.remove({});
+
+//create the names collection and add documents to it
+kandyTypeData.forEach(function(kandyType){
+  print("inserting: "+kandyType);
+  db.kandytypes.insert(kandyType);
+});
+
+db.kandytypes.find({});
