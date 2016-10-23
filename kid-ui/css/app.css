@@ -224,6 +224,8 @@ video#video {
 	position: relative;
 }
 .fab-menu {
+	display: flex;
+	flex-direction: column;
 	visibility: hidden;
 	opacity: 0;
 	position: absolute;
