@@ -6,16 +6,16 @@ var leaderboardData = [
   {
     name: "Mr. Chocolate",
     candyCount: 23332
-  }
+  },
   {
     name: "Eric Liao",
     candyCount: 426
-  }
+  },
   {
     name: "Michael Hsu",
     candyCount: 10
 
-  }
+  },
   {
     name: "Precious Pierre",
     candyCount: 1
