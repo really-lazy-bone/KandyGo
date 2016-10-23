@@ -41,6 +41,7 @@ function MapCtrl($http, $scope) {
     var vm = this;
     vm.mymap = L.map('mapid').setView([36.1228808, -115.1669438,17], 15);
     
+    vm.toggleFab = toggleFab;
     vm.showProviderInfo = showProviderInfo;
     vm.hideProviderInfo = hideProviderInfo;
     vm.swipe = swipe;
@@ -71,13 +72,20 @@ function MapCtrl($http, $scope) {
                     icon: keyMarkerIcon
                 });
                 provider.marker.on('click', function() {
+                    console.log('teststestestes');
                     vm.currentProvider = provider;
                     $scope.$apply();
+                    console.log('provider');
                     console.debug('clicked on provider ' + provider.providerDisplayName);
                     showProviderInfo(provider);
                 });
             });
         });
+
+    function toggleFab() {
+        document.querySelector('.fab-menu')
+            .classList.toggle('open');
+    }
 
     function showProviderInfo(provider) {
         //open modal of static image of provider

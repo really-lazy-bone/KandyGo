@@ -27,11 +27,17 @@
         </a>
 	</div>
     <div class="candy-count">
-        <picture class="profile">
-            <a href="" ng-link="['Profile']">
+        <div class="profile fab">
+            <div ng-click="$ctrl.toggleFab()">
                 <img src="/assets/profile.png" alt="">
-            </a>
-        </picture>
+            </div>
+
+            <div class="fab-menu">
+                <a href="" ng-link="['Profile']">
+                    <img src="/assets/camera.png" alt="">
+                </a>
+            </div>
+        </div>
         <picture>
             <img src="/assets/sm-candybar.png" alt="">
             <small>x</small>{{$ctrl.currentUser.candies[0].count}}
