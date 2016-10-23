@@ -1,8 +1,6 @@
-<div ng-show="$ctrl.showVideo" class="photo-view">
-	<video id="video" autoplay></video>
-	<a id="snap" class="photo-button" ng-click="$ctrl.updateView()"><img ng-src="assets/camera.png"></a>
-</div>
-<canvas id="canvas" width="640" height="480"></canvas>
-<div ng-hide="$ctrl.showVideo" class="photo-view">
+<div class="photo-view">
 	<img id="image" src="">
+	<p>Please take a selfie</p>
+	<a id="snap" class="photo-button"><img ng-src="assets/camera.png"></a>
 </div>
+<input id="camera" type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput">
