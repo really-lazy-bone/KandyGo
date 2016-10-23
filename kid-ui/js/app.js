@@ -36,10 +36,14 @@ function AppCtrl() {
     console.debug('Hello kid app');
 }
 
-function MapCtrl($http) {
+function MapCtrl($http, $scope) {
     console.debug('Hello map component');
     var vm = this;
     vm.mymap = L.map('mapid').setView([36.1228808, -115.1669438,17], 15);
+    
+    vm.showProviderInfo = showProviderInfo;
+    vm.hideProviderInfo = hideProviderInfo;
+
     var selfMarkerIcon = L.icon({
         iconUrl: '/assets/human-top-view.svg',
         iconSize: [23, 31],
@@ -66,10 +70,23 @@ function MapCtrl($http) {
                     icon: keyMarkerIcon
                 });
                 provider.marker.on('click', function() {
+                    vm.currentProvider = provider;
+                    $scope.$apply();
                     console.debug('clicked on provider ' + provider.providerDisplayName);
+                    showProviderInfo(provider);
                 });
             });
         });
+
+    function showProviderInfo(provider) {
+        //open modal of static image of provider
+        document.getElementById('providerInfo').classList.remove('hide');
+    }
+
+    function hideProviderInfo() {
+        document.getElementById('providerInfo').classList.add('hide');
+        vm.currentProvider = '';
+    }
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
