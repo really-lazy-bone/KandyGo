@@ -1,6 +1,6 @@
 var exampleUserCandyData = [
   {
-  _id : 1,
+  _id : "1",
   userName: "eric",
   userDisplayName: "Eric",
   userPofile: "",
