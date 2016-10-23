@@ -30,9 +30,9 @@ var kandyTypeData = [
     "candyConversionRate":0.5
   },
   {
-    "eventName": "money2020",
-    "eventDisplayName": "Money 20/20 Scavenger Hunt",
-    "eventDescription": "Scavenger hunt for vendor booths in exhibition hall, completed with sponsored kandies!",
+    "eventName": "halloween",
+    "eventDisplayName": "Halloween",
+    "eventDescription": "Community event to clean the beach",
     "candyType": "mastercard-candy",
     "candyName": "Mastercard Candy",
     "candyImageName": "mastercard-candy.svg",
@@ -40,15 +40,15 @@ var kandyTypeData = [
     "candyConversionRate":1
   },
   {
-    "eventName": "money2020",
-    "eventDisplayName": "Money 20/20 Scavenger Hunt",
-    "eventDescription": "Scavenger hunt for vendor booths in exhibition hall, completed with sponsored kandies!",
+    "eventName": "heal-the-bay-mastercard",
+    "eventDisplayName": "Heal the Bay (Sponsored by Mastercard)",
+    "eventDescription": "Community event to clean the beach",
     "candyType": "mastercard-candy",
     "candyName": "Mastercard Candy",
     "candyImageName": "mastercard-candy.svg",
     "candyDescription": "Priceless",
     "candyConversionRate":1
-  },
+  }
 ];
 
 
