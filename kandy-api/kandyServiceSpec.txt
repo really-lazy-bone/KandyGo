@@ -1,91 +1,27 @@
 NOTE: Find service endpoint in Slack
 
-GET /candyType
+GET http://104.236.146.40:1880/candyType
 Returns a list of available candyTypes in MongoDB
 
-Response:
-    [
-      {
-      "_id": "580bbda7f79bbb8e90a4d45c",
-      "eventName": "halloween",
-      "eventDisplayName": "Halloween",
-      "eventDescription": "spooky fun festival for kids and adults",
-      "candyType": "bite-size-candy",
-      "candyName": "Bite-Sized Candy",
-      "candyImageName": "bite-size.svg",
-      "candyDescription": "cheap candy from cheap people lol",
-      "candyConversionRate": 0.05
-      },
-      {
-      "_id": "580bbda7f79bbb8e90a4d45d",
-      "eventName": "halloween",
-      "eventDisplayName": "Halloween",
-      "eventDescription": "spooky fun festival for kids and adults",
-      "candyType": "normal-candy",
-      "candyName": "Normal Candy",
-      "candyImageName": "normal-size.svg",
-      "candyDescription": "your everyday standard candy",
-      "candyConversionRate": 0.1
-      },
+GET http://104.236.146.40:1880/candyUsers
+Returns a list of user objects and their candies
 
-      ...
-    ]
+POST http://104.236.146.40:1880/candyUsers
+POST body should be the updated user object. Updates the user document in mongodb with the matching _id.
 
+GET http://104.236.146.40:1880/candyProviders
+Returns a list of candyProvider objects and their candy inventory
 
-GET /candyUsers
-Returns a list of Users and their candy inventory
-Response:
+POST http://104.236.146.40:1880/candyProviders
+POST body should be the updated candyProvider object. Updates database, and also broadcasts the updated object to all clients connected at:
+    ws://104.236.146.40:1880candyProviders
 
-[
-   {
-      "_id":"580bd9d1f8bff1d4cc5bfe42",
-      "userName":"eric",
-      "userDisplayName":"Eric",
-      "userPofile":"",
-      "candies":[
-         {
-            "candyObject":{
-               "eventName":"halloween",
-               "eventDisplayName":"Halloween",
-               "eventDescription":"spooky fun festival for kids and adults",
-               "candyType":"bite-size-candy",
-               "candyName":"Bite-Sized Candy",
-               "candyImageName":"bite-size.svg",
-               "candyDescription":"cheap candy from cheap people lol",
-               "candyConversionRate":0.05
-            },
-            "count":500
-         },
-         {
-            "candyObject":{
-               "eventName":"halloween",
-               "eventDisplayName":"Halloween",
-               "eventDescription":"spooky fun festival for kids and adults",
-               "candyType":"normal-candy",
-               "candyName":"Normal Candy",
-               "candyImageName":"normal-size.svg",
-               "candyDescription":"your everyday standard candy",
-               "candyConversionRate":0.1
-            },
-            "count":100
-         },
-         {
-            "candyObject":{
-               "eventName":"halloween",
-               "eventDisplayName":"Halloween",
-               "eventDescription":"spooky fun festival for kids and adults",
-               "candyType":"full-size-candy",
-               "candyName":"Full-Size Candy",
-               "candyImageName":"full-size.svg",
-               "candyDescription":"only the rich and elite can afford this. Full-sized bars",
-               "candyConversionRate":0.5
-            },
-            "count":100
-         }
-      ]
-   }
+POST http://104.236.146.40:1880/P2P
+Calls Mastercard P2P api
 
-   ....
+----------------------------------
 
-   
-]
+Websocket input/outputs:
+input: ws://104.236.146.40:1880/checkin: message should be user object posted from user. Outputs to ws://104.236.146.40:1880/andyUserCheckin (providers should be connected)
+
+input: ws://104.236.146.40:1880/candyUserCheckin: message should be User object with updated Candy Count
