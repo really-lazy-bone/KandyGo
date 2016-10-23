@@ -1,1 +1,45 @@
-Form
+<header layout="row">
+    <div class="plain button">
+        <a href="" ng-link="['Map']">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42">
+            <path d="M23.83,21L41.41,3.41c0.78-0.78,0.78-2.05,0-2.83s-2.05-0.78-2.83,0L21,18.17L3.41,0.59
+                c-0.78-0.78-2.05-0.78-2.83,0C0.2,0.98,0,1.49,0,2s0.2,1.02,0.59,1.41L18.17,21L0.59,38.59c-0.78,0.78-0.78,2.05,0,2.83
+                C0.98,41.8,1.49,42,2,42s1.02-0.2,1.41-0.59L21,23.83l17.59,17.59c0.78,0.78,2.05,0.78,2.83,0s0.78-2.05,0-2.83L23.83,21z"/>
+        </svg>
+        </a>
+    </div>
+    <h1 flex>Event Detail</h1>
+    <a href="" ng-link="['Form2']" class="next plain button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.17 40.34">
+            <path d="M20.17,35.51L4.83,20.17L20.17,4.83l1.41-1.41c0.78-0.78,0.78-2.05,0-2.83l0,0c-0.78-0.78-2.05-0.78-2.83,0
+                L0.59,18.76c-0.78,0.78-0.78,2.05,0,2.83l18.17,18.17c0.78,0.78,2.05,0.78,2.83,0l0,0c0.78-0.78,0.78-2.05,0-2.83L20.17,35.51z"/>
+        </svg>
+    </a>
+</header>
+<form action="">
+    <div layout="row" layout-padding>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Event Type</label>
+            <md-select ng-model="user.state" flex>
+              <md-option value="holiday">
+                 Holiday Special Event
+              </md-option>
+              <md-option value="community">
+                 Community Service
+              </md-option>
+            </md-select>
+          </md-input-container>
+     </div>
+     <div layout="row" layout-padding>
+          <md-input-container class="md-block" flex>
+            <label>Event Title</label>
+            <input ng-model="user.city">
+          </md-input-container>
+     </div>
+     <div layout="row" layout-padding>
+          <md-input-container class="md-block" flex>
+            <label>Description</label>
+            <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+          </md-input-container>
+     </div>
+</form>
