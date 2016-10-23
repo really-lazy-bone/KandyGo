@@ -122,11 +122,13 @@ function MapCtrl($http, $scope) {
     function showProviderInfo(provider) {
         //open modal of static image of provider
         document.getElementById('providerInfo').classList.remove('hide');
+        vm.mymap.flyTo(new L.LatLng(vm.currentProvider.lat, vm.currentProvider.long), 18);
     }
 
     function hideProviderInfo() {
         document.getElementById('providerInfo').classList.add('hide');
         vm.currentProvider = '';
+        vm.mymap.flyTo(new L.LatLng(currentLat, currentLong), 16);
     }
 
     function swipe(direction) {
