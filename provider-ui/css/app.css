@@ -11,10 +11,19 @@ html, body,
 }
 
 .map {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 #mapid {
@@ -46,14 +55,24 @@ html, body,
     font-family: Helvetica, Arial, SANS-SERIF;
     font-size: 16px;
     font-weight: 800;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 header.layout-row {
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 header h1 {
     text-align: center;
@@ -73,18 +92,29 @@ header .plain.button {
 }
 
 .plain.button.next {
-    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
 }
 
 .candy-wrapper {
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
 }
 
 .candy-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     font-size: 13px;
 }
 
@@ -100,7 +130,9 @@ svg.canty,
 }
 
 svg.candy {
-    flex: 1 1 8em;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 8em;
+            flex: 1 1 8em;
     width: auto;
     height: 50px;
     fill: #002BF9;
@@ -111,9 +143,13 @@ svg.candy {
     padding: 3px;
     width: 5em;
     font-size: 16px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-around;
-    align-content: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -ms-flex-line-pack: center;
+        align-content: center;
     font-weight: 400;
     font-family: Helvetica, Arial, sans-serif;
 }
@@ -148,16 +184,27 @@ svg.candy {
 .candy-container {
     margin-top: 2em !important;
     margin-bottom: 2em;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
 }
 
 .candy-give {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 60px;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
     text-align: center;
 }
 
@@ -175,13 +222,21 @@ svg.candy {
 }
 
 .title-bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .title-bar h2 {
     font-size: 16px;
-    flex: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     text-align: center;
     color: #002BF9;
     font-weight: 800;
@@ -209,7 +264,7 @@ a.cancel {
   margin: 100px auto;
   background-color: #333;
 
-  border-radius: 100%;  
+  border-radius: 100%;
   -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
   animation: sk-scaleout 1.0s infinite ease-in-out;
 }
@@ -223,7 +278,7 @@ a.cancel {
 }
 
 @keyframes sk-scaleout {
-  0% { 
+  0% {
     -webkit-transform: scale(0);
     transform: scale(0);
   } 100% {
@@ -234,29 +289,53 @@ a.cancel {
 }
 
 .flex-center {
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 .animated.radius {
-	animation: pulse 3s infinite cubic-bezier(0.88, -0.05, 0.4, 0.9);	
-	transform-origin: center center;
+	-webkit-animation: pulse 3s infinite cubic-bezier(0.88, -0.05, 0.4, 0.9);
+	        animation: pulse 3s infinite cubic-bezier(0.88, -0.05, 0.4, 0.9);
+	-webkit-transform-origin: center center;
+	        transform-origin: center center;
+}
+
+@-webkit-keyframes pulse {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+
+  to {
+    opacity: 0.7;
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
 }
 
 @keyframes pulse {
   from {
     opacity: 0;
-    transform: scale(0, 0);
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
   }
 
   to {
     opacity: 0.7;
-    transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
   }
 }
 
 .total {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
     font-size: 26px;
     font-weight: 800;
     margin-top: 1em;

@@ -11,10 +11,19 @@ html, body,
 }
 
 .map {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .map nav {
@@ -22,22 +31,31 @@ html, body,
     z-index: 100000000000;
 }
 .map .candy-count {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 100%;
-    align-items: flex-end;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
     margin-bottom: 35px;
     z-index: 100000000000;
     line-height: 1.5em;
     font-family: Helvetica, Arial, sans-serif;
-    
-    align-self: flex-end;
+
+    -ms-flex-item-align: end;
+
+        align-self: flex-end;
     color: #FB34FB;
     font-weight: 400;
     font-size: 20px;
 }
 .map .candy-count .profile {
-    flex: 1;
-    align-self: flex-start;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
 	margin-left: 1em;
 }
 .map .candy-count picture {
@@ -63,7 +81,7 @@ html, body,
 	display: none;
 }
 
-video#video { 
+video#video {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -77,13 +95,22 @@ video#video {
     background-size: cover;
 }
 
-.photo-view { 
+.photo-view {
 	position: relative;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: row;
-	justify-content: center;
-    align-items: center;
-	width: 100vw; 
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+	width: 100vw;
 	height: 100vh;
 }
 .photo-view p {
@@ -101,13 +128,14 @@ video#video {
 
 #image {
 	z-index: -1;
-	position: fixed; 
-	top: 0; 
-	left: 0; 
+	position: fixed;
+	top: 0;
+	left: 0;
 	/* Preserve aspet ratio */
 	width: 100%;
 	height: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
 }
 #camera {
     display: none;
@@ -129,25 +157,37 @@ video#video {
 	box-sizing: border-box;
 	top: 0;
 	padding: 2em;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
 	z-index: 999999;
 	width: 100vw;
 	height: 100vh;
 	background-color: transparent;
 }
 .flip-container {
-    perspective: 1000px;
+    -webkit-perspective: 1000px;
+            perspective: 1000px;
 }
 
 /* flip the pane when hovered */
 .flip-container.swipe .flipper {
-    transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
 }
 .flip-container.swipe.right .flipper {
-    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
 }
 
 .flip-container, .front, .back {
@@ -157,15 +197,18 @@ video#video {
 
 /* flip speed goes here */
 .flipper {
+	-webkit-transition: 0.6s;
 	transition: 0.6s;
-	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	        transform-style: preserve-3d;
 
 	position: relative;
 }
 
 /* hide back of pane during swap */
 .front, .back {
-	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	        backface-visibility: hidden;
 
 	position: absolute;
 	top: 0;
@@ -176,18 +219,26 @@ video#video {
 .front {
 	z-index: 2;
 	/* for firefox 31 */
-	transform: rotateY(0deg);
+	-webkit-transform: rotateY(0deg);
+	        transform: rotateY(0deg);
 }
 
 /* back, initially hidden pane */
 .back {
-	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	        transform: rotateY(180deg);
 }
 
 .provider-info .close {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 	color: #fff;
 	font-size: 20px;
 	border: 1px solid #fff;
@@ -224,13 +275,19 @@ video#video {
 	position: relative;
 }
 .fab-menu {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: column;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
 	visibility: hidden;
 	opacity: 0;
 	position: absolute;
 	top: -1em;
 	left: 0;
+	-webkit-transition: all 0.3s cubic-bezier(0.58, 0.19, 0.65, 1.76);
 	transition: all 0.3s cubic-bezier(0.58, 0.19, 0.65, 1.76)
 }
 .fab-menu img {
@@ -240,21 +297,40 @@ video#video {
 .fab-menu.open {
 	opacity: 1;
 	visibility: visible;
-	transform: translateY(-6em);
+	-webkit-transform: translateY(-6em);
+	        transform: translateY(-6em);
 }
 .animated.radius {
-	animation: pulse 3s infinite cubic-bezier(0.88, -0.05, 0.4, 0.9);	
-	transform-origin: center center;
+	-webkit-animation: pulse 3s infinite cubic-bezier(0.88, -0.05, 0.4, 0.9);
+	        animation: pulse 3s infinite cubic-bezier(0.88, -0.05, 0.4, 0.9);
+	-webkit-transform-origin: center center;
+	        transform-origin: center center;
+}
+
+@-webkit-keyframes pulse {
+  from {
+	opacity: 0;
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+
+  to {
+	opacity: 0.7;
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
 }
 
 @keyframes pulse {
   from {
 	opacity: 0;
-    transform: scale(0, 0);
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
   }
 
   to {
 	opacity: 0.7;
-    transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
   }
 }
