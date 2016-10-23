@@ -22,6 +22,11 @@ angular.module('provider')
                 path: '/form-2',
                 name: 'Form2',
                 component: 'providerForm2'
+            },
+            {
+                path: '/waiting',
+                name: 'Map2',
+                component: 'providerMap2'
             }
         ]
     });
@@ -40,7 +45,12 @@ angular.module('provider')
         templateUrl: 'partials/form2.html',
         bindings: { $router: '<' },
         controller: FormCtrl
-    })
+    });
+angular.module('provider')
+    .component('providerMap2', {
+        templateUrl: 'partials/map2.html',
+        controller: MapCtrl
+    });
 
 function AppCtrl() {
     console.debug('provider app');
@@ -57,22 +67,23 @@ function FormCtrl($http, $mdDialog) {
                     $mdDialog.alert()
                         .parent(angular.element(document.body))
                         .clickOutsideToClose(true)
-                        .title('Thanks!')
-                        .textContent('Your event has been brought online!')
+                        .title('🎉 Thanks 🎉')
+                        .textContent('Your event was purchased')
                         .ariaLabel('Event shared')
                         .ok('👍')
                         .targetEvent(ev)
                 )
                 .then(function() {
-                    vm.$router.navigate(['Map']);                   
+                    vm.$router.navigate(['Map2']);                   
                 });
             })
     }
 }
 
-function MapCtrl($http) {
+function MapCtrl($http, $timeout, $mdDialog) {
     console.debug('provider map component');
-     var vm = this;
+    var vm = this;
+
     vm.mymap = L.map('mapid').setView([36.1228808, -115.1669438,17], 15);
     var selfMarkerIcon = L.icon({
         iconUrl: '/assets/human-top-view.svg',
@@ -121,4 +132,39 @@ function MapCtrl($http) {
     function addMarker(lat, long, option) {
         return L.marker([lat, long], option).addTo(vm.mymap);
     }
+
+    function showRequest() {
+        $mdDialog.show({
+            controller: DialogController,
+            templateUrl: 'partials/request.html',
+            parent: angular.element(document.body)
+        })
+        .then(function(answer) {
+            console.log('giving ' + JSON.stringify(answer));
+        }, function() {
+            console.debug('cancelled dialog');
+        });
+    }
+}
+
+function DialogController($scope, $mdDialog) {
+    console.debug('DialogController');
+
+    $scope.candyCount = [0, 0, 0];
+
+    $scope.increaseCount = function(index) {
+        $scope.candyCount[index] ++;
+    };
+
+    $scope.reset = function() {
+        $scope.candyCount = [0, 0, 0];
+    };
+
+    $scope.cancel = function() {
+        $mdDialog.cancel();
+    };
+
+    $scope.give = function() {
+        $mdDialog.hide($scope.candyCount);
+    };
 }
