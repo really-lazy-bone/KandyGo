@@ -1,4 +1,6 @@
 NOTE: Find service endpoint in Slack
+GET http://104.236.146.40:1880/leaderboard
+Returns a list of simulated users and their candy count
 
 GET http://104.236.146.40:1880/candyType
 Returns a list of available candyTypes in MongoDB
