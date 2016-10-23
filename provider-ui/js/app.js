@@ -38,6 +38,7 @@ angular.module('provider')
 angular.module('provider')
     .component('providerForm2', {
         templateUrl: 'partials/form2.html',
+        bindings: { $router: '<' },
         controller: FormCtrl
     })
 
@@ -45,8 +46,28 @@ function AppCtrl() {
     console.debug('provider app');
 }
 
-function FormCtrl() {
+function FormCtrl($http, $mdDialog) {
     console.debug('provider form component');
+    var vm = this;
+
+    vm.checkout = function(ev) {
+        $http.post('http://104.236.146.40:1880/p2p')
+            .then(() => {
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .parent(angular.element(document.body))
+                        .clickOutsideToClose(true)
+                        .title('Thanks!')
+                        .textContent('Your event has been brought online!')
+                        .ariaLabel('Event shared')
+                        .ok('👍')
+                        .targetEvent(ev)
+                )
+                .then(function() {
+                    vm.$router.navigate(['Map']);                   
+                });
+            })
+    }
 }
 
 function MapCtrl($http) {

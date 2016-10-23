@@ -1,5 +1,5 @@
 <header layout="row">
-    <div class="plain button">
+    <div class="previous plain button">
         <a href="" ng-link="['Form']">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.17 40.34">
             <path d="M20.17,35.51L4.83,20.17L20.17,4.83l1.41-1.41c0.78-0.78,0.78-2.05,0-2.83l0,0c-0.78-0.78-2.05-0.78-2.83,0
@@ -110,7 +110,9 @@
             </div>
         </div>
     </div>
-    <div layout="row" class="candy-wrapper checkout-button">
+    <div layout="row" class="candy-wrapper checkout-button"
+        md-ink-ripple="#00D6F9"
+        ng-click="$ctrl.checkout($event)">
         <img src="/assets/mastercard.svg" alt="">
     </div>
 </div>
