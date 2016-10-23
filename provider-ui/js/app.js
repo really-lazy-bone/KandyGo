@@ -186,7 +186,8 @@ function MapCtrl($http, $timeout, $mdDialog) {
         color: '#fff',
         fillColor: '#fff',
         fillOpacity: 0.1,
-        radius: 100
+        radius: 300,
+        className: 'animated radius'
     }).addTo(vm.mymap);
     vm.mymap.panTo(new L.LatLng(currentLat, currentLong));
     // }, function(err) {
