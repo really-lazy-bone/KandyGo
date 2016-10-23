@@ -30,7 +30,7 @@
                 100 Hard Candies
             </div>
             <div class="stepper">
-                <span ng-click="$ctrl.stepDown(0)">-</span> {{ $ctrl.candies[0] }} <span ng-click="$ctrl.stepUp(0)">+</span>
+                <span ng-click="$ctrl.stepDown(0)">-</span> <span>{{ $ctrl.candies[0] }}</span> <span ng-click="$ctrl.stepUp(0)">+</span>
             </div>
             <div class="price">
                 ${{$ctrl.candyPrices[0]}}
@@ -64,7 +64,7 @@
                 250 Lollipops
             </div>
             <div class="stepper">
-               <span ng-click="$ctrl.stepDown(1)">-</span> {{ $ctrl.candies[1] }} <span ng-click="$ctrl.stepUp(1)">+</span>
+               <span ng-click="$ctrl.stepDown(1)">-</span> <span>{{ $ctrl.candies[1] }}</span> <span ng-click="$ctrl.stepUp(1)">+</span>
             </div>
             <div class="price">
                 ${{$ctrl.candyPrices[1]}}
@@ -102,8 +102,9 @@
             <div class="quantity">
                 500 Candy Bars
             </div>
-            <div class="stepper">
-                <span ng-click="$ctrl.stepDown(2)">-</span> {{ $ctrl.candies[2] }} <span ng-click="$ctrl.stepUp(2)">+</span>
+            <div class="stepper"
+                ng-swipe-left="$ctrl.stepDown(2)">
+                <span ng-click="$ctrl.stepDown(2)">-</span> <span>{{ $ctrl.candies[2] }}</span> <span ng-click="$ctrl.stepUp(2)">+</span>
             </div>
             <div class="price">
                 ${{$ctrl.candyPrices[2]}}
