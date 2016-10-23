@@ -1,3 +1,10 @@
+var socket = new WebSocket('ws://104.236.146.40:1880/candyProviders');
+var checkSocket = new WebSocket('ws://104.236.146.40:1880/checkin');
+
+checkSocket.onopen = function() {
+    console.debug('check in socket connected');
+};
+
 angular.module('kid', ['ngComponentRouter', 'ngTouch']);
 
 angular.module('kid')
@@ -37,6 +44,27 @@ function AppCtrl() {
 }
 
 function MapCtrl($http, $scope) {
+    socket.onmessage = function (event) {
+        console.debug('Got data from the socket');
+        console.log(event.data);
+        var provider = JSON.parse(event.data);
+        provider.marker = addMarker(provider.lat, provider.long, {
+            icon: keyMarkerIcon
+        });
+        provider.marker.on('click', function() {
+            vm.currentProvider = provider;
+            $scope.$apply();
+            console.log('provider');
+            console.debug('clicked on provider ' + provider.providerDisplayName);
+            showProviderInfo(provider);
+        });
+    };
+    checkSocket.onmessage = function(event) {
+        console.debug('Got data from check in socket');
+        vm.currentUser = JSON.parse(event.data);
+        console.log(vm.currentUser);
+        $scope.$apply();
+    };
     console.debug('Hello map component');
     var vm = this;
     vm.mymap = L.map('mapid').setView([36.1228808, -115.1669438,17], 15);
@@ -54,10 +82,14 @@ function MapCtrl($http, $scope) {
     var keyMarkerIcon = L.icon({
         iconUrl: '/assets/sm-lollipop.png',
     });
+    var visitedMarkerIcon = L.icon({
+        iconUrl: '/assets/pink.png'
+    })
     $http.get('http://104.236.146.40:1880/candyUsers')
         .then(function(response) {
             vm.users = response.data;
             vm.currentUser = vm.users[0];
+            console.debug(vm.currentUser);
         });
     // 36.1183782,-115.1711297
     var currentLat = 36.1183782;
@@ -106,7 +138,9 @@ function MapCtrl($http, $scope) {
         } else {
             flipper.classList.add('swipe', 'right');
         }
-        console.log('swiped the event with ' + direction);
+        vm.currentProvider.marker.setIcon(visitedMarkerIcon);
+        console.debug('swiped the event with ' + direction);
+        checkSocket.send(JSON.stringify(vm.currentUser));
     }
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {

@@ -1,3 +1,5 @@
+var socket = new WebSocket('ws://104.236.146.40:1880/candyUserCheckin');
+
 angular.module('provider', ['ngComponentRouter', 'ngMaterial']);
 angular.module('provider')
     .value('$routerRootComponent', 'providerApp');
@@ -59,20 +61,73 @@ function AppCtrl() {
 function FormCtrl($http, $mdDialog) {
     console.debug('provider form component');
     var vm = this;
+    vm.type = 'holiday';
+    vm.title = 'Halloween';
+    vm.description = 'Spooky fun festival for kids and adults 🎃';
 
     vm.checkout = function(ev) {
         $http.post('http://104.236.146.40:1880/p2p')
             .then(() => {
-                $mdDialog.show(
-                    $mdDialog.alert()
-                        .parent(angular.element(document.body))
-                        .clickOutsideToClose(true)
-                        .title('🎉 Thanks 🎉')
-                        .textContent('Your event was purchased')
-                        .ariaLabel('Event shared')
-                        .ok('👍')
-                        .targetEvent(ev)
-                )
+                $http.post('http://104.236.146.40:1880/candyProviders', {
+                    "providerName": "money2020",
+                    "providerDisplayName": "Angel Hack",
+                    "providerPofile": "https://scontent.flas1-2.fna.fbcdn.net/t31.0-8/13320879_992792147484559_3401961512810085185_o.jpg",
+                    "lat": 36.1221811,
+                    "long": -115.1699481,
+                    "isAdvertised": true,
+                    "candies": [
+                        {
+                            "candyObject": {
+                                "eventName": "halloween",
+                                "eventDisplayName": "Halloween",
+                                "eventDescription": "spooky fun festival for kids and adults",
+                                "candyType": "bite-size-candy",
+                                "candyName": "Bite-Sized Candy",
+                                "candyImageName": "bite-size.svg",
+                                "candyDescription": "cheap candy from cheap people lol",
+                                "candyConversionRate": 0.05
+                            },
+                            "count": 20
+                        },
+                        {
+                            "candyObject": {
+                                "eventName": "halloween",
+                                "eventDisplayName": "Halloween",
+                                "eventDescription": "spooky fun festival for kids and adults",
+                                "candyType": "normal-candy",
+                                "candyName": "Normal Candy",
+                                "candyImageName": "normal-size.svg",
+                                "candyDescription": "your everyday standard candy",
+                                "candyConversionRate": 0.1
+                            },
+                            "count": 10
+                        },
+                        {
+                            "candyObject": {
+                                "eventName": "halloween",
+                                "eventDisplayName": "Halloween",
+                                "eventDescription": "spooky fun festival for kids and adults",
+                                "candyType": "full-size-candy",
+                                "candyName": "Full-Size Candy",
+                                "candyImageName": "full-size.svg",
+                                "candyDescription": "only the rich and elite can afford this. Full-sized bars",
+                                "candyConversionRate": 0.5
+                            },
+                            "count": 5
+                        }
+                    ]
+                }).then(() => {
+                    return $mdDialog.show(
+                        $mdDialog.alert()
+                            .parent(angular.element(document.body))
+                            .clickOutsideToClose(true)
+                            .title('🎉 Thanks 🎉')
+                            .textContent('Your event was purchased')
+                            .ariaLabel('Event shared')
+                            .ok('👍')
+                            .targetEvent(ev)
+                    );
+                })
                 .then(function() {
                     vm.$router.navigate(['Map2']);                   
                 });
@@ -83,6 +138,11 @@ function FormCtrl($http, $mdDialog) {
 function MapCtrl($http, $timeout, $mdDialog) {
     console.debug('provider map component');
     var vm = this;
+    socket.onmessage = function(event) {
+        console.debug(event.data);
+        vm.visitor = JSON.parse(event.data);
+        showRequest();
+    };
 
     vm.mymap = L.map('mapid').setView([36.1228808, -115.1669438,17], 15);
     var selfMarkerIcon = L.icon({
@@ -106,8 +166,6 @@ function MapCtrl($http, $timeout, $mdDialog) {
         .then(response => {
             vm.providers = response.data;
             console.debug(vm.providers);
-            vm.providers.forEach(provider => {
-            });
         });
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -141,6 +199,11 @@ function MapCtrl($http, $timeout, $mdDialog) {
         })
         .then(function(answer) {
             console.log('giving ' + JSON.stringify(answer));
+            for (var i = 0; i < answer.length; i++) {
+                vm.visitor.candies[i].count += answer[i];
+            }
+            console.log(vm.visitor);
+            socket.send(JSON.stringify(vm.visitor));
         }, function() {
             console.debug('cancelled dialog');
         });

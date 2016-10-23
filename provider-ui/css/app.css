@@ -227,3 +227,7 @@ a.cancel {
     opacity: 0;
   }
 }
+
+.flex-center {
+    justify-content: center;
+}
