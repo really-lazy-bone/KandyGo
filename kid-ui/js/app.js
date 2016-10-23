@@ -41,21 +41,27 @@ function MapCtrl($http) {
     var vm = this;
     vm.mymap = L.map('mapid').setView([36.1228808, -115.1669438,17], 15);
     var selfMarkerIcon = L.icon({
-        iconUrl: '/assets/blue-location.png',
-        iconSize: [30, 39]
+        iconUrl: '/assets/human-top-view.svg',
+        iconSize: [23, 31],
+        className: 'me marker'
     });
     var keyMarkerIcon = L.icon({
-        iconUrl: '/assets/purple-location.png',
-        iconSize: [30, 39]
+        iconUrl: '/assets/sm-lollipop.png',
     });
+    $http.get('http://104.236.146.40:1880/candyUsers')
+        .then(function(response) {
+            vm.users = response.data;
+            vm.currentUser = vm.users[0];
+        });
 
     navigator.geolocation.getCurrentPosition(function(position) {
         vm.me = addMarker(position.coords.latitude, position.coords.longitude, {
             icon: selfMarkerIcon
         });
         vm.radius = L.circle([position.coords.latitude, position.coords.longitude], {
-            color: '#0ff',
-            fillColor: '#0ff',
+            weight: 2,
+            color: '#fff',
+            fillColor: '#fff',
             fillOpacity: 0.1,
             radius: 100
         }).addTo(vm.mymap);

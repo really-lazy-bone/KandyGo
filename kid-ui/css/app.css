@@ -21,6 +21,23 @@ html, body,
     margin-bottom: 3em;
     z-index: 100000000000;
 }
+.map .candy-count {
+    margin-bottom: 35px;
+    z-index: 100000000000;
+    line-height: 1.5em;
+    font-family: Helvetica, Arial, sans-serif;
+    
+    align-self: flex-end;
+    color: #FB34FB;
+    font-weight: 400;
+    font-size: 20px;
+}
+.map .candy-count picture {
+    margin-right: 5px;
+}
+.map .candy-count small {
+    font-size: 16px;
+}
 .map nav a {
     color: #fff;
 }
@@ -86,4 +103,7 @@ video#video {
     height: 1em;
     border-radius: 50%;
     background-color: #f00;
+}
+.me.marker {
+    fill: #fff;
 }

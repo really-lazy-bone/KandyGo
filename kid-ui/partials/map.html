@@ -1,6 +1,17 @@
 <div class="relative-wrapper fill-to-body map">
     <div id="mapid"></div>
-    <nav>
-        <a href="" ng-link="['Profile']">profile</a>
-    </nav>
+    <div class="candy-count">
+        <picture>
+            <img src="/assets/sm-candybar.png" alt="">
+            <small>x</small>{{$ctrl.currentUser.candies[0].count}}
+        </picture>
+        <picture>
+            <img src="/assets/sm-lollipop.png" alt="">
+            <small>x</small>{{$ctrl.currentUser.candies[1].count}}
+        </picture>
+        <picture>
+            <img src="/assets/sm-hard-candy.png" alt="">
+            <small>x</small>{{$ctrl.currentUser.candies[2].count}}
+        </picture>
+    </div>
 </div>
