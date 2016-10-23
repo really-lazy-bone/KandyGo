@@ -9,7 +9,7 @@ var leaderboardData = [
   }
   {
     name: "Eric Liao",
-    candyCount: 23
+    candyCount: 426
   }
   {
     name: "Michael Hsu",
@@ -27,8 +27,8 @@ var db = conn.getDB("kandygo");
 db.leaderboard.remove({});
 
 //create the names collection and add documents to it
-exampleUserCandyData.forEach(function(kandyUser){
-  db.kandyusers.insert(kandyUser);
+leaderboardData.forEach(function(leaderboard){
+  db.leaderboard.insert(leaderboard);
 });
 
-db.kandyusers.find({});
+db.leaderboard.find({});

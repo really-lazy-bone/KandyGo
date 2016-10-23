@@ -6,7 +6,7 @@
     providerPofile: "http://q-ec.bstatic.com/data/explorer_city/max800/431/4310.jpg",
     lat: 36.121174,
     long: -115.1696526,
-    isAdvertised: false,
+    isAdvertised: true,
     candies: [
       {
         "candyObject": {
@@ -57,7 +57,7 @@
   providerPofile: "http://www.lasvegashighrise.co/images/trump-hdr-b09b74d25f3fd69aa0dc5c1f4c6a591a.jpg?vsn=d",
   lat: 36.1295451,
   long: -115.1728213,
-  isAdvertised: false,
+  isAdvertised: true,
   candies: [
     {
       "candyObject": {
@@ -108,7 +108,7 @@
   providerPofile: "http://r-ec.bstatic.com/data/explorer_city/max800/439/4395.jpg",
   lat: 36.124571,
   long: -115.169474,
-  isAdvertised: false,
+  isAdvertised: true,
   candies: [
     {
       "candyObject": {
@@ -159,7 +159,7 @@
   providerPofile: "https://b6c18f286245704fe3e9-05e2055f4cd9122af02914269431c9f6.ssl.cf1.rackcdn.com/10736130_a-definitive-ranking-of-the-top-10-ben-and_t25f0428b.png",
   lat: 36.120502,
   long: -115.171727,
-  isAdvertised: false,
+  isAdvertised: true,
   candies: [
     {
       "candyObject": {
@@ -210,7 +210,7 @@
   providerPofile: "https://8583b52b4a309671f69d-b436b898353c7dc300b5887446a26466.ssl.cf1.rackcdn.com/5987539_caesars-palace_t2448c4ac.jpg",
   lat: 36.1195923,
   long: -115.1719154,
-  isAdvertised: false,
+  isAdvertised: true,
   candies: [
     {
       "candyObject": {
