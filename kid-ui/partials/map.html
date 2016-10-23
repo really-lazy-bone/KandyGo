@@ -1,5 +1,31 @@
 <div class="relative-wrapper fill-to-body map">
     <div id="mapid"></div>
+    <div id="providerInfo" class="provider-info hide">
+        <div class="display-name">
+            {{$ctrl.currentProvider.providerDisplayName}}
+        </div>
+        <div id="image_flipper" class="flip-container">
+            <div class="flipper">
+                <div class="front">
+                    <img ng-src="{{$ctrl.currentProvider.providerPofile}}"
+                        ng-swipe-left="$ctrl.swipe('left')"
+                        ng-swipe-right="$ctrl.swipe('right')">
+                </div>
+                <div class="back">
+                    <img ng-src="{{$ctrl.currentProvider.providerPofile}}"
+                        ng-swipe-left="$ctrl.swipe('left')"
+                        ng-swipe-right="$ctrl.swipe('right')">
+                </div>
+            </div>
+        </div>
+        <a ng-click="$ctrl.hideProviderInfo()" class="close">
+             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42">
+                <path d="M23.83,21L41.41,3.41c0.78-0.78,0.78-2.05,0-2.83s-2.05-0.78-2.83,0L21,18.17L3.41,0.59
+                    c-0.78-0.78-2.05-0.78-2.83,0C0.2,0.98,0,1.49,0,2s0.2,1.02,0.59,1.41L18.17,21L0.59,38.59c-0.78,0.78-0.78,2.05,0,2.83
+                    C0.98,41.8,1.49,42,2,42s1.02-0.2,1.41-0.59L21,23.83l17.59,17.59c0.78,0.78,2.05,0.78,2.83,0s0.78-2.05,0-2.83L23.83,21z"/>
+            </svg>
+        </a>
+	</div>
     <div class="candy-count">
         <picture class="profile">
             <a href="" ng-link="['Profile']">
@@ -19,9 +45,4 @@
             <small>x</small>{{$ctrl.currentUser.candies[2].count}}
         </picture>
     </div>
-    <div id="providerInfo" class="provider-info hide">
-		<div class="display-name">{{$ctrl.currentProvider.providerDisplayName}}</div>
-			<img ng-src="http://www.venetian.com/content/dam/lasvegas/venetian/master/main/home/activities-events/gondola-rides/gondola-500x340.jpg">
-		<a ng-click="$ctrl.hideProviderInfo()" class="close">X</a>
-	</div>
 </div>

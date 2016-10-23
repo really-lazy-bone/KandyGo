@@ -7,5 +7,5 @@ app.all('/*', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-console.log('Running static server at 3050');
-app.listen(3050);
+console.log('Running static server at 3051');
+app.listen(3051);

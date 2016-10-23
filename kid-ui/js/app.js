@@ -1,4 +1,4 @@
-angular.module('kid', ['ngComponentRouter']);
+angular.module('kid', ['ngComponentRouter', 'ngTouch']);
 
 angular.module('kid')
     .value('$routerRootComponent', 'kidApp');
@@ -43,6 +43,7 @@ function MapCtrl($http, $scope) {
     
     vm.showProviderInfo = showProviderInfo;
     vm.hideProviderInfo = hideProviderInfo;
+    vm.swipe = swipe;
 
     var selfMarkerIcon = L.icon({
         iconUrl: '/assets/human-top-view.svg',
@@ -86,6 +87,18 @@ function MapCtrl($http, $scope) {
     function hideProviderInfo() {
         document.getElementById('providerInfo').classList.add('hide');
         vm.currentProvider = '';
+    }
+
+    function swipe(direction) {
+        var flipper = document.getElementById('image_flipper');
+        flipper.classList.remove('swipe');
+        flipper.classList.remove('right');
+        if (direction === 'left') {
+            flipper.classList.add('swipe');
+        } else {
+            flipper.classList.add('swipe', 'right');
+        }
+        console.log('swiped the event with ' + direction);
     }
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
