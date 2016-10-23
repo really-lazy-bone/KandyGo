@@ -19,4 +19,9 @@
             <small>x</small>{{$ctrl.currentUser.candies[2].count}}
         </picture>
     </div>
+    <div id="providerInfo" class="provider-info hide">
+		<div class="display-name">{{$ctrl.currentProvider.providerDisplayName}}</div>
+			<img ng-src="http://www.venetian.com/content/dam/lasvegas/venetian/master/main/home/activities-events/gondola-rides/gondola-500x340.jpg">
+		<a ng-click="$ctrl.hideProviderInfo()" class="close">X</a>
+	</div>
 </div>
