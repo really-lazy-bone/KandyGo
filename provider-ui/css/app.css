@@ -42,6 +42,10 @@ html, body,
     font-size: 20px;
     font-weight: 400;
     font-family: Hevetica, Arial, SANS-SERIF;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width:100%;
 }
 
 .bottom.button {
@@ -292,6 +296,7 @@ a.cancel {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    width:100%;
 }
 
 .animated.radius {
