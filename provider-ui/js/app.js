@@ -65,6 +65,8 @@ function FormCtrl($http, $mdDialog) {
     vm.title = 'Halloween';
     vm.description = 'Spooky fun festival for kids and adults 🎃';
     var randomLatLongs = [{"_id":"580c6b268417cf30f3a6842e","lat":36.122821,"long":-115.169009},{"_id":"580c6b268417cf30f3a6842f","lat":36.1225935,"long":-115.1704145},{"_id":"580c6b268417cf30f3a68430","lat":36.120828,"long":-115.168544},{"_id":"580c6b268417cf30f3a68431","lat":36.120686,"long":-115.1717265}];
+    vm.candies = [20, 10, 5];
+    vm.candyPrices = [0.99, 4.99, 9.99];
 
     vm.checkout = function(ev) {
         var latLong = randomLatLongs[getRandomIntInclusive(0, randomLatLongs.length -1)];
@@ -139,6 +141,24 @@ function FormCtrl($http, $mdDialog) {
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
+    }
+
+    vm.stepDown = function(index) {
+        vm.candies[index] --;
+    };
+
+    vm.stepUp = function(index) {
+        vm.candies[index] ++;
+    };
+
+    vm.getTotal = function() {
+        var total = 0;
+
+        for (var i = 0; i < vm.candies.length; i ++) {
+            total += vm.candyPrices[i] * vm.candies[i];
+        }
+
+        return parseFloat(Math.round(total * 100) / 100).toFixed(2);
     }
 }
 
