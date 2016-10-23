@@ -22,6 +22,9 @@ html, body,
     z-index: 100000000000;
 }
 .map .candy-count {
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
     margin-bottom: 35px;
     z-index: 100000000000;
     line-height: 1.5em;
@@ -31,6 +34,11 @@ html, body,
     color: #FB34FB;
     font-weight: 400;
     font-size: 20px;
+}
+.map .candy-count .profile {
+    flex: 1;
+    align-self: flex-start;
+    margin-left: 1em;
 }
 .map .candy-count picture {
     margin-right: 5px;
