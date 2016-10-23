@@ -1,4 +1,4 @@
-var exampleProviderCandyData = [
+  var exampleProviderCandyData = [
   {
     _id : 1,
     providerName: "dans-house",
