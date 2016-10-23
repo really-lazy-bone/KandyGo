@@ -64,16 +64,18 @@ function FormCtrl($http, $mdDialog) {
     vm.type = 'holiday';
     vm.title = 'Halloween';
     vm.description = 'Spooky fun festival for kids and adults 🎃';
+    var randomLatLongs = [{"_id":"580c6b268417cf30f3a6842e","lat":36.122821,"long":-115.169009},{"_id":"580c6b268417cf30f3a6842f","lat":36.1225935,"long":-115.1704145},{"_id":"580c6b268417cf30f3a68430","lat":36.120828,"long":-115.168544},{"_id":"580c6b268417cf30f3a68431","lat":36.120686,"long":-115.1717265}];
 
     vm.checkout = function(ev) {
+        var latLong = randomLatLongs[getRandomIntInclusive(0, randomLatLongs.length -1)];
         $http.post('http://104.236.146.40:1880/p2p')
             .then(() => {
                 $http.post('http://104.236.146.40:1880/candyProviders', {
                     "providerName": "money2020",
                     "providerDisplayName": "Angel Hack",
                     "providerPofile": "https://scontent.flas1-2.fna.fbcdn.net/t31.0-8/13320879_992792147484559_3401961512810085185_o.jpg",
-                    "lat": 36.1221811,
-                    "long": -115.1699481,
+                    "lat": latLong.lat,
+                    "long": latLong.long,
                     "isAdvertised": true,
                     "candies": [
                         {
@@ -131,7 +133,12 @@ function FormCtrl($http, $mdDialog) {
                 .then(function() {
                     vm.$router.navigate(['Map2']);                   
                 });
-            })
+            });
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
     }
 }
 
